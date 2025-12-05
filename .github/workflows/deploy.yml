@@ -1,22 +1,12 @@
 name: Firebase Continuous Deployment
-
-on:
-  push:
-    branches: [ main ]
-
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18 
-      - run: npm ci
-      - run: npm run build
-      
-      - uses: w9jds/firebase-action@v4 
+      - uses: actions/checkout@v4       # Стабильная версия
+      - uses: actions/setup-node@v4     # Стабильная версия
+      # ...
+      - uses: w9jds/firebase-action@v3  # Исправлено на v3
         with:
           args: deploy --only hosting
         env:
