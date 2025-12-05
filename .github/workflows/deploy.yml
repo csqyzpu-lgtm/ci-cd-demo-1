@@ -9,13 +9,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-      - uses: actions/setup-node@main
+      - uses: actions/checkout@v4 
+      - uses: actions/setup-node@v4
         with:
-          node-version: 12
+          node-version: 18 
       - run: npm ci
       - run: npm run build
-      - uses: w9jds/firebase-action@main
+      
+      - uses: w9jds/firebase-action@v4 
         with:
           args: deploy --only hosting
         env:
